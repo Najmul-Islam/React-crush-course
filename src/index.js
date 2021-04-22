@@ -1,6 +1,11 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
-import App from "./App"
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <ul>
+    <li>One</li>
+    <li>Two</li>
+    <li>Three</li>
+  </ul>, 
+document.getElementById('root'));

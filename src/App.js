@@ -3,7 +3,17 @@ import React from "react"
 function App(){
   return(
     <div>
-      Hello world
+     <input type="checkbox" />
+     <p>Placeholder text here</p>
+
+      <input type="checkbox" />
+      <p>Placeholder text here</p>
+
+      <input type="checkbox" />
+      <p>Placeholder text here</p>
+
+      <input type="checkbox" />
+      <p>Placeholder text here</p>
     </div>
   )
 }

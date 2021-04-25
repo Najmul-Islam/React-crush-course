@@ -1,11 +1,20 @@
 import React from 'react'
 
-function App () {
-    return(
-        <div>
-            
-        </div>
-    )
+class App extends React.Component {
+    constructor(){
+        super()
+        this.state = {
+            answer: "Yes"
+        }
+    }
+
+    render(){
+        return (
+            <div>
+                <h1>Is state importent to know? {this.state.answer}</h1>
+            </div>
+        )
+    }
 }
 
 export default App

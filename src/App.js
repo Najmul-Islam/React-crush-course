@@ -1,11 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react';
 
-function App () {
-    return(
-        <div>
-            
-        </div>
-    )
+class App extends Component {
+    constructor(){
+        super()
+        this.state = {
+            loading: false,
+            character: {}
+        }
+    }
+
+    componentDidMount(){
+        this.setState({loading: true})
+       fetch('https://swapi.dev/api/people/1')
+       .then(response => response.json())
+       .then(data => {
+           this.setState({
+               loading: false,
+               character: data
+           })
+       })
+    }
+
+    render() {
+        const text = this.state.loading ? "loding..." : this.state.character.name
+        return (
+            <div>
+               {text}
+            </div>
+        );
+    }
 }
 
-export default App
+export default App;

@@ -1,11 +1,27 @@
 import React from 'react'
 
-function App () {
-    return(
-        <div>
-            
-        </div>
-    )
+// function App (props) {
+//     return(
+//         <div>
+//            {props.whatever}
+//         </div>
+//     )
+// }
+
+class App extends React.Component {
+
+    yourMethodHere(){
+        
+    }
+
+    render(){
+        
+        return(
+            <div>
+                <h1>{this.props.whatever}</h1>
+            </div>
+        )
+    }
 }
 
 export default App

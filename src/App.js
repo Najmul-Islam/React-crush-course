@@ -6,20 +6,25 @@ class App extends Component {
         this.state = {
             firstName: '',
             lastName: '',
-            email: ''
+            isFriendly: true,
+            gender: '',
+            favColor: 'blue'
         }
         this.handleChange = this.handleChange.bind(this)
     }
 
     handleChange(e){
-        this.setState({
-            [e.target.name]: e.target.value
+        const {name, value, type, checked} = e.target
+       type === "checkbox" ? this.setState({[name] : checked }) : this.setState({
+            [name]: value
         })
     }
 
+    handleSubmit
+
     render(){
         return(
-            <form action="">
+            <form action="" onSubmit={this.handleSubmit}>
                 <input
                     name="firstName"
                     type="text"
@@ -28,6 +33,7 @@ class App extends Component {
                     placeholder="First Name"
                 />
                     <br/>
+
                 <input 
                     name="lastName"
                     type="text"
@@ -36,17 +42,62 @@ class App extends Component {
                     placeholder="Last Name"
                 />
                 <br/>
-                <input 
-                    type="email" 
-                    name="email"
-                    value={this.state.value}
-                    onChange={this.handleChange}
-                    placeholder="Email"
-                />
 
-                <h1>{this.state.firstName}</h1>
-                <h1>{this.state.lastName}</h1>
-                <h1>{this.state.email}</h1>
+                <textarea 
+                    value={'Some default value'}
+                    onChange={this.handleChange}
+                />
+                <br/>
+
+                <label>
+                    <input 
+                        type="checkbox"
+                        name="isFriendly"
+                        checked={this.state.isFriendly}
+                        onChange={this.handleChange}
+                    /> Is Friendly?
+                </label>
+                <br/>
+
+                <label htmlFor="">
+                    <input 
+                        type="radio"
+                        name="gender"
+                        value="male"
+                        checked={this.state.gender === "male"}
+                        onChange = {this.handleChange}
+                    />Male
+                </label>
+                <br/>
+
+                <label htmlFor="">
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="female"
+                        checked={this.state.gender === "female"}
+                        onChange={this.handleChange}
+                    />Female
+                </label>
+                    <br/>
+
+                <label htmlFor="">Favorite color:</label>
+                <select 
+                    value={this.state.favColor}
+                    onChange={this.handleChange}
+                    name="favColor"
+                >
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                    <option value="red">Red</option>
+                    <option value="orange">Orange</option>
+                </select>
+
+                <h1>{this.state.firstName} {this.state.lastName}</h1>
+                <h2>You are a {this.state.gender}</h2>
+                <h2>Your favorite color is {this.state.favColor} </h2>
+
+                <button >Submit</button>
             </form>
         )
     }

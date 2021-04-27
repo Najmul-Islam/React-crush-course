@@ -1,104 +1,105 @@
 import React, {Component} from 'react'
 
-class App extends Component {
+class App extends Component{
     constructor(){
         super()
         this.state = {
             firstName: '',
             lastName: '',
-            isFriendly: true,
+            age: '',
             gender: '',
-            favColor: 'blue'
+            destination: '',
+            dieraryRestrictions: []
         }
         this.handleChange = this.handleChange.bind(this)
     }
 
     handleChange(e){
-        const {name, value, type, checked} = e.target
-       type === "checkbox" ? this.setState({[name] : checked }) : this.setState({
-            [name]: value
+        const {name, value} = e.target
+
+        this.setState({
+            [name] : value
         })
     }
 
-    handleSubmit
-
     render(){
         return(
-            <form action="" onSubmit={this.handleSubmit}>
-                <input
-                    name="firstName"
-                    type="text"
-                    value={this.state.firstName}
-                    onChange={this.handleChange}
-                    placeholder="First Name"
-                />
+            <div>
+                <form>
+                    <label>
+                        First Name:
+                        <input 
+                            type="text"
+                            name="firstName"
+                            value={this.state.firstName}
+                            placeholder="First Name"
+                            onChange={this.handleChange}
+                        />
+                    </label>
+                    <br/>
+                    <label>
+                        Last Name:
+                        <input
+                            type="text"
+                            name="lastName"
+                            value={this.state.lastName}
+                            placeholder="Last Name"
+                            onChange={this.handleChange}
+                        />
+                    </label>
+                    <br/>
+                    <label>
+                        Age:
+                        <input
+                            type="number"
+                            name="age"
+                            value={this.state.age}
+                            placeholder="Your Age"
+                            onChange={this.handleChange}
+                        />
+                    </label>
+                    <br/>
+                    <label>
+                       <input 
+                            type="radio"
+                            name="gender"
+                            value="male"
+                            checked={this.state.gender === "male"}
+                            onChange={this.handleChange}
+                        /> Male
+                    </label>
+                    <br/>
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="female"
+                            checked={this.state.gender === "female"}
+                            onChange={this.handleChange}
+                        /> Female
+                    </label>
                     <br/>
 
-                <input 
-                    name="lastName"
-                    type="text"
-                    value={this.state.lastName}
-                    onChange={this.handleChange}
-                    placeholder="Last Name"
-                />
-                <br/>
-
-                <textarea 
-                    value={'Some default value'}
-                    onChange={this.handleChange}
-                />
-                <br/>
-
-                <label>
-                    <input 
-                        type="checkbox"
-                        name="isFriendly"
-                        checked={this.state.isFriendly}
+                    <select 
+                        value={this.state.destination} name="destination"
                         onChange={this.handleChange}
-                    /> Is Friendly?
-                </label>
-                <br/>
+                    >
+                        <option value="">-- Please Choose a destinaiton --</option>
+                        <option value="germany">Germany</option>
+                        <option value="norway">Norway</option>
+                        <option value="north pole">North pole</option>
+                        <option value="south pole">South pole</option>
+                    </select>
 
-                <label htmlFor="">
-                    <input 
-                        type="radio"
-                        name="gender"
-                        value="male"
-                        checked={this.state.gender === "male"}
-                        onChange = {this.handleChange}
-                    />Male
-                </label>
-                <br/>
-
-                <label htmlFor="">
-                    <input
-                        type="radio"
-                        name="gender"
-                        value="female"
-                        checked={this.state.gender === "female"}
-                        onChange={this.handleChange}
-                    />Female
-                </label>
-                    <br/>
-
-                <label htmlFor="">Favorite color:</label>
-                <select 
-                    value={this.state.favColor}
-                    onChange={this.handleChange}
-                    name="favColor"
-                >
-                    <option value="blue">Blue</option>
-                    <option value="green">Green</option>
-                    <option value="red">Red</option>
-                    <option value="orange">Orange</option>
-                </select>
-
-                <h1>{this.state.firstName} {this.state.lastName}</h1>
-                <h2>You are a {this.state.gender}</h2>
-                <h2>Your favorite color is {this.state.favColor} </h2>
-
-                <button >Submit</button>
-            </form>
+                    <button>Submit</button>
+                </form>
+                <hr/>
+                <h2>Entered information:</h2>
+                <p>Your Name: {this.state.firstName} {this.state.lastName} </p>
+                <p>Your age: {this.state.age}</p>
+                <p>Your gender: {this.state.gender}</p>
+                <p>Your Destination: {this.state.destination}</p>
+            </div>
         )
     }
 }
